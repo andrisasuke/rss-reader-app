@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:padding="5dp"
+    android:layout_margin="2dp">
+
+    <ImageView
+        android:id="@+id/news_photo_image"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/football_sample"/>
+
+    <com.andrisasuke.app.cardnews.custom.XTextView
+        android:id="@+id/news_photo_title"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:textSize="9sp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentBottom="true"
+        tools:text="Napoli and Milan push Perin."
+        android:maxLines="2"
+        android:paddingLeft="2dp"
+        android:background="#40000000"
+        android:textColor="@color/white"
+        app:fontFamily="nsText"
+        app:fontStyle="regular"/>
+
+</RelativeLayout>

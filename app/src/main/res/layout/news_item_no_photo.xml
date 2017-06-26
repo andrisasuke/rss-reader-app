@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="13.3dp"
+    android:paddingRight="16.7dp"
+    android:id="@+id/news_row">
+
+    <com.andrisasuke.app.cardnews.custom.XTextView
+        android:id="@+id/news_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:textSize="13.5sp"
+        tools:text="Donnarumma Milan message &#039;hacked&#039;?"
+        app:fontFamily="nsText"
+        app:fontStyle="bold"/>
+
+    <com.andrisasuke.app.cardnews.custom.XTextView
+        android:id="@+id/news_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/news_title"
+        android:layout_marginTop="8dp"
+        android:maxLines="4"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:fontFamily="nsText"
+        app:fontStyle="regular"
+        tools:text="Milan fans are utterly confused tonight after Gianluigi Donnarumma posted a message promising to discuss a new contract, then claimed his account was hacked..."/>
+
+    <com.andrisasuke.app.cardnews.custom.XTextView
+        android:id="@+id/news_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/news_description"
+        android:textColor="@color/soft_gray"
+        android:layout_marginTop="7dp"
+        android:layout_alignParentLeft="true"
+        tools:text="Football Italia"
+        android:textSize="11sp"
+        app:fontFamily="nsText"
+        app:fontStyle="regular" />
+
+    <com.andrisasuke.app.cardnews.custom.XTextView
+        android:id="@+id/news_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/news_description"
+        android:textColor="@color/soft_gray"
+        android:layout_marginTop="7dp"
+        android:layout_alignParentRight="true"
+        tools:text="an hour ago"
+        android:textSize="11sp"
+        app:fontFamily="nsText"
+        app:fontStyle="regular" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/news_author"
+        android:layout_marginTop="13dp"
+        android:background="@color/soft_gray" />
+
+</RelativeLayout>

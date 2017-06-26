@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:id="@+id/header_item_layout">
+
+    <HorizontalScrollView
+        android:id="@+id/news_photo_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/header_news_photo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="0dp">
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <include layout="@layout/news_item_no_photo"
+        android:id="@+id/news_item"/>
+
+</LinearLayout>
