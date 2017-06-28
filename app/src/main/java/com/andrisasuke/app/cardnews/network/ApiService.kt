@@ -1,7 +1,10 @@
 package com.andrisasuke.app.cardnews.network
 
 import android.content.Context
+import android.util.Log
+
 import com.andrisasuke.app.cardnews.model.ApiResponseCallback
+import com.andrisasuke.app.cardnews.model.NewsHolder
 import com.andrisasuke.app.cardnews.model.NewsList
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,7 +17,8 @@ class ApiService (val context: Context, val apiNetworkService: ApiNetworkService
 
     companion object {
         val SORT_LATEST = "latest"
-        val SORT_POPULAR = "popular"
+        val SORT_POPULAR = "top"
+        val TAG = "ApiService"
     }
 
     interface ApiNetworkService {
@@ -25,13 +29,22 @@ class ApiService (val context: Context, val apiNetworkService: ApiNetworkService
 
     }
 
-    fun getNews(sortBy: String, source: String, callback: ApiResponseCallback<NewsList>): Subscription {
+    fun getNews( source: String, callback: ApiResponseCallback<NewsHolder>): Subscription {
         val apiKey = "41651ce701f9439188061d47d5477a90"
-        return apiNetworkService.list(source, sortBy, apiKey).subscribeOn(Schedulers.io())
+        val newsPopularObservable = apiNetworkService.list(source, SORT_POPULAR, apiKey);
+        val newLatestObservable = apiNetworkService.list(source, SORT_LATEST, apiKey);
+        val zipped: Observable<NewsHolder> = Observable.zip(newsPopularObservable,
+                newLatestObservable ) { t1, t2 ->
+                    NewsHolder(t1.articles.toMutableList(), t2.articles.toMutableList())
+        }
+        return zipped.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { newList -> callback.onSuccess(newList)},
-                        { error -> callback.onFailed(NetworkError(context, error = error))}
-                );
+                        { newHolder -> callback.onSuccess(newHolder)},
+                        { error ->
+                            Log.e(TAG, "Error fetching news, ${error.message}")
+                            callback.onFailed(NetworkError(context, error = error))
+                        }
+                )
     }
 }

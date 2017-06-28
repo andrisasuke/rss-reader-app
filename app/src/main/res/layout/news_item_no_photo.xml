@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:paddingLeft="13.3dp"
     android:paddingRight="16.7dp"
-    android:id="@+id/news_row">
+    android:id="@+id/news_row"
+    android:background="@color/white">
 
     <com.andrisasuke.app.cardnews.custom.XTextView
         android:id="@+id/news_title"
@@ -14,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
-        android:textSize="13.5sp"
+        android:textSize="14sp"
         tools:text="Donnarumma Milan message &#039;hacked&#039;?"
         app:fontFamily="nsText"
         app:fontStyle="bold"/>
@@ -27,7 +28,7 @@
         android:layout_marginTop="8dp"
         android:maxLines="4"
         android:textColor="@color/black"
-        android:textSize="13sp"
+        android:textSize="13.8sp"
         app:fontFamily="nsText"
         app:fontStyle="regular"
         tools:text="Milan fans are utterly confused tonight after Gianluigi Donnarumma posted a message promising to discuss a new contract, then claimed his account was hacked..."/>

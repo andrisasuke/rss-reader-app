@@ -12,7 +12,7 @@ data class News(val author: String,
                 val urlToImage: String,
                 val publishedAt: String)
 
-data class NewsHolder(val newsPopular: List<News>, val newsLatest: List<News>)
+data class NewsHolder(val newsPopular: MutableList<News>, val newsLatest: MutableList<News>)
 
 data class ErrorResponse(val status: String,
                          val code: String,

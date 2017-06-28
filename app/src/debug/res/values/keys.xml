@@ -2,5 +2,4 @@
 <resources>
     <string name="app_name" translatable="false">News Card DEV</string>
     <string name="server_url" translatable="false">https://newsapi.org/</string>
-    <string name="okhttp_log_level" translatable="false">BODY</string>
 </resources>

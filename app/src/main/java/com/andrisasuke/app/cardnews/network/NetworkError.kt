@@ -4,6 +4,7 @@ import android.content.Context
 import com.andrisasuke.app.cardnews.R
 import com.andrisasuke.app.cardnews.model.ErrorResponse
 import com.google.gson.Gson
+import retrofit2.Response
 import retrofit2.adapter.rxjava.HttpException
 import java.io.IOException
 
@@ -16,17 +17,16 @@ class NetworkError(val context: Context, val error: Throwable ): Throwable() {
             is IOException -> return context.getString(R.string.common_error_internet)
             !is HttpException -> return context.getString(R.string.common_error_processing)
             else -> {
-                val response = (this.error).response()
-                if (response != null) {
-                    return getJsonStringFromResponse()
-                }
-                return context.getString(R.string.common_error_processing)
+                val response: Response<*>?  = (this.error).response()
+                if (response != null)
+                    return getJsonStringFromResponse(response)
+                else return context.getString(R.string.common_error_processing)
             }
         }
     }
 
-    private fun getJsonStringFromResponse(): String {
-        val body = (error as HttpException).response().errorBody()
+    private fun getJsonStringFromResponse(response: Response<*>): String {
+        val body = response.errorBody()
         try {
             val bodyText = body?.string();
             val errorResponse = gson.fromJson(bodyText, ErrorResponse::class.java)

@@ -19,15 +19,21 @@
         <item name="colorPrimary">@color/colorPrimary</item> 
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
         <item name="colorControlHighlight">@color/soft_gray</item> 
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorAccent">@color/white</item>
         <item name="android:editTextStyle">@style/EditTextStyle</item>
         <item name="android:windowBackground">@color/background_material_light</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
         <item name="colorControlHighlight">@color/white</item>
+    </style>
+
+    <style name="CenterProgressBar">
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
 </resources>

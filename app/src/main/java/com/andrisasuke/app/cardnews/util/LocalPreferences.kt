@@ -4,14 +4,37 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import com.andrisasuke.app.cardnews.BuildConfig
+import com.andrisasuke.app.cardnews.model.DataSource
+import com.andrisasuke.app.cardnews.model.NewsHolder
+import com.google.gson.Gson
 
 class LocalPreferences(val context: Context) {
 
     companion object {
         val NEWS_CACHE = "news_cache"
+        val NEWS_SOURCE = "news_source";
     }
 
     val prefs: SharedPreferences by lazy { context.getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE) }
+
+    val gson by lazy { Gson() }
+
+    fun storeNewsSource(source: String) {
+        putPreference(NEWS_SOURCE, source)
+    }
+
+    fun getNewsSource(): String = findPreference(NEWS_SOURCE, DataSource.values[0])
+
+    fun storeNewsCache(newsHolder: NewsHolder){
+        val json = gson.toJson(newsHolder)
+        putPreference(NEWS_CACHE, json)
+    }
+
+    fun getNewsCache(): NewsHolder? {
+        val json: String = findPreference(NEWS_CACHE, "")
+        if(json != "") return gson.fromJson(json, NewsHolder::class.java)
+        else return null
+    }
 
     @Suppress("UNCHECKED_CAST")
     private fun <T> findPreference(name: String, default: T?): T = with(prefs) {
