@@ -1,5 +1,6 @@
 package com.andrisasuke.app.cardnews.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -10,9 +11,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import com.andrisasuke.app.cardnews.BaseActivity
 import com.andrisasuke.app.cardnews.R
+import com.andrisasuke.app.cardnews.about.About
 import com.andrisasuke.app.cardnews.model.DataSource
 import com.andrisasuke.app.cardnews.model.News
 import com.andrisasuke.app.cardnews.model.NewsHolder
@@ -113,6 +114,9 @@ class HomeActivity : BaseActivity(), HomeView {
             }
             R.id.menu_home_source -> {
                 showSourceOption()
+            }
+            R.id.menu_home_about -> {
+                startActivity(Intent(this, About::class.java))
             }
             else -> return false
         }

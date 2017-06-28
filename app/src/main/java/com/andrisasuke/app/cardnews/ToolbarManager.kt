@@ -14,14 +14,14 @@ interface ToolbarManager {
             toolbar.title = value
         }
 
-    fun initToolbar() {
+    fun initToolbar(useNavigation: Boolean = false) {
         appCompat.setSupportActionBar(toolbar)
         toolbar.setNavigationOnClickListener {
             onNavigationClick()
         }
-        appCompat.supportActionBar?.setHomeButtonEnabled(false)
-        appCompat.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        appCompat.supportActionBar?.setDisplayShowHomeEnabled(false)
+        appCompat.supportActionBar?.setHomeButtonEnabled(useNavigation)
+        appCompat.supportActionBar?.setDisplayHomeAsUpEnabled(useNavigation)
+        appCompat.supportActionBar?.setDisplayShowHomeEnabled(useNavigation)
 
     }
 

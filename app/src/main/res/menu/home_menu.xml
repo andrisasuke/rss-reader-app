@@ -11,5 +11,9 @@
         android:title="Source"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/menu_home_about"
+        android:icon="@mipmap/ic_refresh_white"
+        android:title="@string/about_lbl"
+        app:showAsAction="never"/>
 
 </menu>
