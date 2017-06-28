@@ -2,6 +2,7 @@ package com.andrisasuke.app.cardnews.network
 
 import android.content.Context
 import android.util.Log
+import com.andrisasuke.app.cardnews.BuildConfig
 
 import com.andrisasuke.app.cardnews.model.ApiResponseCallback
 import com.andrisasuke.app.cardnews.model.NewsHolder
@@ -30,7 +31,7 @@ class ApiService (val context: Context, val apiNetworkService: ApiNetworkService
     }
 
     fun getNews( source: String, callback: ApiResponseCallback<NewsHolder>): Subscription {
-        val apiKey = "41651ce701f9439188061d47d5477a90"
+        val apiKey = BuildConfig.API_KEY
         val newsPopularObservable = apiNetworkService.list(source, SORT_POPULAR, apiKey);
         val newLatestObservable = apiNetworkService.list(source, SORT_LATEST, apiKey);
         val zipped: Observable<NewsHolder> = Observable.zip(newsPopularObservable,
