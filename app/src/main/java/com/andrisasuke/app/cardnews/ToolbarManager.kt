@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar
 interface ToolbarManager {
 
     val toolbar: Toolbar
-    val appCompat: AppCompatActivity
+    val activity: AppCompatActivity
 
     var toolbarTitle: String
         get() = toolbar.title.toString()
@@ -15,13 +15,13 @@ interface ToolbarManager {
         }
 
     fun initToolbar(useNavigation: Boolean = false) {
-        appCompat.setSupportActionBar(toolbar)
+        activity.setSupportActionBar(toolbar)
         toolbar.setNavigationOnClickListener {
             onNavigationClick()
         }
-        appCompat.supportActionBar?.setHomeButtonEnabled(useNavigation)
-        appCompat.supportActionBar?.setDisplayHomeAsUpEnabled(useNavigation)
-        appCompat.supportActionBar?.setDisplayShowHomeEnabled(useNavigation)
+        activity.supportActionBar?.setHomeButtonEnabled(useNavigation)
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(useNavigation)
+        activity.supportActionBar?.setDisplayShowHomeEnabled(useNavigation)
 
     }
 

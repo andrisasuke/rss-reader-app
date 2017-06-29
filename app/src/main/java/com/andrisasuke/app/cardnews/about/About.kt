@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.about.*
 
 class About : BaseActivity() {
 
-    override val appCompat: AppCompatActivity by lazy { this }
+    override val activity: AppCompatActivity by lazy { this }
 
     override val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) as Toolbar }
 

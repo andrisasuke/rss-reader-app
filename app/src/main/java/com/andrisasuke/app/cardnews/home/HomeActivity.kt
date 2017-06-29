@@ -27,7 +27,7 @@ class HomeActivity : BaseActivity(), HomeView {
     }
 
     override val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) as Toolbar }
-    override val appCompat: AppCompatActivity by lazy { this }
+    override val activity: AppCompatActivity by lazy { this }
 
     val adapter: NewsAdapter by lazy {
         NewsAdapter(this.applicationContext, NewsHolder(mutableListOf(), mutableListOf())) {
