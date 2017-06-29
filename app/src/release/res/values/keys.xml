@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name" translatable="false">News Card DEV</string>
     <string name="server_url" translatable="false">https://newsapi.org/</string>
+    <string name="github_url" translatable="false">https://github.com/andrisasuke/card-news-app</string>
 </resources>

@@ -24,7 +24,7 @@ class About : BaseActivity() {
     private fun renderView(){
         powered_txt.text = Html.fromHtml("Powered by <b>https://newsapi.org</b> API")
         github_text.setOnClickListener{
-            launchUrl("https://github.com/andrisasuke/card-news-app")
+            launchUrl(getString(R.string.github_url))
         }
     }
 

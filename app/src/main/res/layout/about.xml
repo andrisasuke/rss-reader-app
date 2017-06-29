@@ -13,9 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:titleTextColor="@color/white"
-        android:title="@string/about_lbl"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        android:title="@string/about_lbl">
 
     </android.support.v7.widget.Toolbar>
 

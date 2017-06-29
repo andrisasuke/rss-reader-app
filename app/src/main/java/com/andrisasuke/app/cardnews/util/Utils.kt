@@ -13,6 +13,7 @@ import java.util.*
 fun String.toDateFormat(format: String = "yyyy-MM-dd'T'hh:mm:ss'Z'") : String {
     val sd = SimpleDateFormat(format, Locale.getDefault())
     try {
+        sd.timeZone = TimeZone.getDefault()
         val dt = sd.parse(this)
         val result = DateUtils.getRelativeTimeSpanString(dt.time)
         return result.toString()
