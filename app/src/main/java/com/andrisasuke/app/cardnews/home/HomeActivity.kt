@@ -125,7 +125,6 @@ class HomeActivity : BaseActivity(), HomeView {
 
     private fun News.gotoDetailNews(){
         Log.d(TAG, "news detail: ${this.title}")
-        //Toast.makeText(applicationContext, "open news detail to ${this.url}", Toast.LENGTH_SHORT).show()
         if (!TextUtils.isEmpty(this.url))
             launchUrl(this.url)
     }
@@ -141,10 +140,8 @@ class HomeActivity : BaseActivity(), HomeView {
     }
 
     private fun selectSource(source: String){
-        if(localPreferences.getNewsSource() != source) {
-            presenter?.getNews(source)
-            menuItem?.setActionView(R.layout.progress_bar_small)
-            menuItem?.expandActionView()
-        }
+        presenter?.getNews(source)
+        menuItem?.setActionView(R.layout.progress_bar_small)
+        menuItem?.expandActionView()
     }
 }
