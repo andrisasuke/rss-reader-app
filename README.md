@@ -13,11 +13,6 @@ It's build using Kotlin. :)
 * Put your registered API key into `gradle.properties`, api_key="YOUR_API_KEY"
 * Play it
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-
 ### References
 * https://newsapi.org/#documentation
 
