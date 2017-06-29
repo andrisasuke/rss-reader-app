@@ -136,7 +136,7 @@ class NewsAdapter(val context: Context, val newsHolder: NewsHolder, val itemClic
                 val photoImg = mView.findViewById(R.id.news_photo_image) as ImageView
 
                 mView.layoutParams = params
-                photoTitle.text = ns.title
+                photoTitle.text = Html.fromHtml(ns.title)
                 photoImg.setOnClickListener { itemClick(ns) }
 
                 loadImage(photoImg, ns.urlToImage, R.drawable.frame)

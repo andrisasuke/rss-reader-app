@@ -16,6 +16,7 @@ class About : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.about)
         initToolbar(true)
         changeToolbarTitle(getString(R.string.about_lbl))
         renderView()
@@ -23,6 +24,7 @@ class About : BaseActivity() {
 
     private fun renderView(){
         powered_txt.text = Html.fromHtml("Powered by <b>https://newsapi.org</b> API")
+        github_text.text = Html.fromHtml("<u>Source code is available on</u>")
         github_text.setOnClickListener{
             launchUrl(getString(R.string.github_url))
         }

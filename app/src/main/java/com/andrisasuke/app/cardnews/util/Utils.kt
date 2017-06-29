@@ -12,10 +12,14 @@ import java.util.*
 
 fun String.toDateFormat(format: String = "yyyy-MM-dd'T'hh:mm:ss'Z'") : String {
     val sd = SimpleDateFormat(format, Locale.getDefault())
+    val timezone = TimeZone.getDefault()
     try {
-        sd.timeZone = TimeZone.getDefault()
         val dt = sd.parse(this)
-        val result = DateUtils.getRelativeTimeSpanString(dt.time)
+        val offset = timezone.getOffset(dt.time) / 1000 / 60 / 60
+        val cal = Calendar.getInstance()
+        cal.add(Calendar.HOUR, offset)
+        cal.time = dt
+        val result = DateUtils.getRelativeTimeSpanString(cal.time.time)
         return result.toString()
     } catch (ex: ParseException) {
         return "today"

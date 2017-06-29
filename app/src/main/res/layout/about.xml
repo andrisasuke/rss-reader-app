@@ -26,33 +26,34 @@
 
     <com.andrisasuke.app.cardnews.custom.XTextView
         android:id="@+id/powered_txt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_below="@id/about_img"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:textSize="12sp"
+        android:layout_centerHorizontal="true"
+        android:textSize="13sp"
         android:textColor="#8F8E94"
         app:fontFamily="nsText"
         app:fontStyle="regular"
-        android:text="Powered by https://newsapi.org API"/>
+        tools:text="Powered by https://newsapi.org API"/>
 
     <com.andrisasuke.app.cardnews.custom.XTextView
         android:id="@+id/github_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/powered_txt"
-        android:layout_marginTop="5dp"
-        android:textSize="12sp"
+        android:layout_marginTop="2dp"
+        android:textSize="13sp"
         android:textColor="#8F8E94"
         android:layout_centerHorizontal="true"
         app:fontFamily="nsText"
         app:fontStyle="regular"
         android:gravity="center"
-        android:text="Source code is available on"
-        android:drawablePadding="0dp"
+        tools:text="Source code is available on"
+        android:drawablePadding="-3dp"
         android:drawableRight="@mipmap/ic_github"/>
 
 </RelativeLayout>
