@@ -1,7 +1,6 @@
 package com.andrisasuke.app.cardnews.about
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.Html
 import com.andrisasuke.app.cardnews.BaseActivity
@@ -10,14 +9,12 @@ import kotlinx.android.synthetic.main.about.*
 
 class About : BaseActivity() {
 
-    override val activity: AppCompatActivity by lazy { this }
-
     override val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) as Toolbar }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.about)
-        initToolbar(true)
+        initToolbar(this, true)
         changeToolbarTitle(getString(R.string.about_lbl))
         renderView()
     }

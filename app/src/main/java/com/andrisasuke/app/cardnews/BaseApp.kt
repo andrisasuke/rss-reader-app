@@ -1,6 +1,9 @@
 package com.andrisasuke.app.cardnews
 
 import android.app.Application
+import com.andrisasuke.app.cardnews.deps.AppComponent
+import com.andrisasuke.app.cardnews.deps.AppModule
+import com.andrisasuke.app.cardnews.deps.DaggerAppComponent
 import com.andrisasuke.app.cardnews.network.ApiService
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -13,8 +16,11 @@ import java.util.concurrent.TimeUnit
 
 class BaseApp : Application() {
 
+    lateinit var deps: AppComponent
+
     override fun onCreate() {
         super.onCreate()
+        deps = DaggerAppComponent.builder().appModule(AppModule(this)).build()
     }
 
     fun provideApiService(): ApiService {

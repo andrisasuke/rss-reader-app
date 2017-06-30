@@ -3,7 +3,6 @@ package com.andrisasuke.app.cardnews.home
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.text.TextUtils
@@ -12,13 +11,17 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.andrisasuke.app.cardnews.BaseActivity
+import com.andrisasuke.app.cardnews.BaseApp
 import com.andrisasuke.app.cardnews.R
 import com.andrisasuke.app.cardnews.about.About
 import com.andrisasuke.app.cardnews.model.DataSource
 import com.andrisasuke.app.cardnews.model.News
 import com.andrisasuke.app.cardnews.model.NewsHolder
+import com.andrisasuke.app.cardnews.network.ApiService
+import com.andrisasuke.app.cardnews.util.LocalPreferences
 
 import kotlinx.android.synthetic.main.home.*
+import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), HomeView {
 
@@ -27,7 +30,6 @@ class HomeActivity : BaseActivity(), HomeView {
     }
 
     override val toolbar: Toolbar by lazy { findViewById(R.id.toolbar) as Toolbar }
-    override val activity: AppCompatActivity by lazy { this }
 
     val adapter: NewsAdapter by lazy {
         NewsAdapter(this.applicationContext, NewsHolder(mutableListOf(), mutableListOf())) {
@@ -39,8 +41,15 @@ class HomeActivity : BaseActivity(), HomeView {
     var menuItem: MenuItem? = null
     var presenter: HomePresenter? = null
 
+    @Inject
+    lateinit var apiService: ApiService
+
+    @Inject
+    lateinit var localPreferences: LocalPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (application as BaseApp).deps.inject(this)
         setContentView(R.layout.home)
         presenter = HomePresenter(this, apiService, localPreferences, this)
         renderView()
@@ -48,7 +57,7 @@ class HomeActivity : BaseActivity(), HomeView {
 
     private fun renderView() {
         progress.visibility = View.GONE
-        initToolbar()
+        initToolbar(this)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL;
         list_news.layoutManager = layoutManager

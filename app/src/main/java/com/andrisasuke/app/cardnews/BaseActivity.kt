@@ -9,14 +9,12 @@ import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.andrisasuke.app.cardnews.network.ApiService
-import com.andrisasuke.app.cardnews.util.LocalPreferences
 
 abstract class BaseActivity : AppCompatActivity(), ToolbarManager {
 
     protected var snackbar: Snackbar? = null
-    protected val localPreferences: LocalPreferences by lazy { LocalPreferences(this) }
-    protected val apiService: ApiService by lazy { (application as BaseApp).provideApiService() }
+    //protected val localPreferences: LocalPreferences by lazy { LocalPreferences(this) }
+    //protected val apiService: ApiService by lazy { (application as BaseApp).provideApiService() }
     protected val handler by lazy {  Handler() }
 
     override fun onCreate(savedInstanceState: Bundle?) {

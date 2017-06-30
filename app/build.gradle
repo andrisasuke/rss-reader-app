@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 25
@@ -31,6 +32,10 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+
+    kapt {
+        generateStubs = true
     }
 }
 
@@ -63,6 +68,10 @@ dependencies {
 
     // gson
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    // dagger
+    kapt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.google.dagger:dagger:2.5'
 }
 repositories {
     mavenCentral()
