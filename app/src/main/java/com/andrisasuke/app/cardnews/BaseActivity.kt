@@ -13,8 +13,6 @@ import android.view.View
 abstract class BaseActivity : AppCompatActivity(), ToolbarManager {
 
     protected var snackbar: Snackbar? = null
-    //protected val localPreferences: LocalPreferences by lazy { LocalPreferences(this) }
-    //protected val apiService: ApiService by lazy { (application as BaseApp).provideApiService() }
     protected val handler by lazy {  Handler() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
