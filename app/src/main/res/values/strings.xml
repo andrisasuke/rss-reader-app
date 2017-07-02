@@ -2,7 +2,7 @@
     <string name="ok_lbl">OK</string>
     <string name="news_lbl">News</string>
     <string name="common_error_processing">Something went wrong. Please try again.</string>
-    <string name="common_error_internet">Your internet connection is unstable, please check your network connection.</string>
+    <string name="common_error_internet">Your internet connection is unstable, please check your connection.</string>
     <string name="internal_server_error">Internal server error.</string>
     <string name="today_lbl">today</string>
     <string name="about_lbl">About</string>

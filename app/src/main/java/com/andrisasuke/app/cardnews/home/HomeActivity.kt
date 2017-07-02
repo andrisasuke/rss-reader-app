@@ -38,8 +38,8 @@ class HomeActivity : BaseActivity(), HomeView {
         }
     }
 
-    var menuItem: MenuItem? = null
-    var presenter: HomePresenter? = null
+    lateinit var menuItem: MenuItem
+    lateinit var presenter: HomePresenter
 
     @Inject
     lateinit var apiService: ApiService
@@ -68,12 +68,13 @@ class HomeActivity : BaseActivity(), HomeView {
             val cachedSource = localPreferences.getNewsSource()
             changeToolbarTitle(cachedSource)
             onSuccessFetchNews(cachedSource, cachedNews)
-        } else presenter?.getNews()
+            presenter.getNews(cachedSource)
+        } else presenter.getNews()
 
     }
 
     override fun onNavigationClick() {
-        if(presenter != null) presenter?.onDestroy()
+        presenter.onDestroy()
         finish()
     }
 
@@ -97,8 +98,8 @@ class HomeActivity : BaseActivity(), HomeView {
 
     override fun dismissLoading() {
         progress.visibility = View.GONE
-        menuItem?.collapseActionView();
-        menuItem?.actionView = null;
+        menuItem.collapseActionView();
+        menuItem.actionView = null;
     }
 
     override fun showError(error: String) {
@@ -108,7 +109,7 @@ class HomeActivity : BaseActivity(), HomeView {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.home_menu, menu)
-        menuItem = menu?.getItem(0)
+        menuItem = menu?.getItem(0) as MenuItem
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -116,10 +117,10 @@ class HomeActivity : BaseActivity(), HomeView {
         when(item?.itemId){
             R.id.menu_home_refresh -> {
                 menuItem = item
-                menuItem?.setActionView(R.layout.progress_bar_small)
-                menuItem?.expandActionView()
+                menuItem.setActionView(R.layout.progress_bar_small)
+                menuItem.expandActionView()
                 val source = localPreferences.getNewsSource()
-                presenter?.getNews(source)
+                presenter.getNews(source)
             }
             R.id.menu_home_source -> {
                 showSourceOption()
@@ -149,8 +150,8 @@ class HomeActivity : BaseActivity(), HomeView {
     }
 
     private fun selectSource(source: String){
-        presenter?.getNews(source)
-        menuItem?.setActionView(R.layout.progress_bar_small)
-        menuItem?.expandActionView()
+        presenter.getNews(source)
+        menuItem.setActionView(R.layout.progress_bar_small)
+        menuItem.expandActionView()
     }
 }
